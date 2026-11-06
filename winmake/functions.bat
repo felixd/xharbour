@@ -274,8 +274,8 @@ echo    :toLower(%*) >> %~dp0functions.log
       FOR %%A in (
          "A=a" "B=b" "C=c" "D=d" "E=e" "F=f" "G=g" "H=h" "I=i"
          "J=j" "K=k" "L=l" "M=m" "N=n" "O=o" "P=p" "Q=q" "R=r"
-         "S=s" "T=t" "U=u" "V=v" "W=w" "X=x" "Y=y" "Z=z" "Ä=ä"
-         "Ö=ö" "Ü=ü"
+         "S=s" "T=t" "U=u" "V=v" "W=w" "X=x" "Y=y" "Z=z" "ï¿½=ï¿½"
+         "ï¿½=ï¿½" "ï¿½=ï¿½"
       ) DO SET str=!str:%%~A!
    ENDLOCAL & set "%~2=%str%"
    EXIT /b 0
@@ -469,8 +469,8 @@ echo    :isPathInPath(%*) >> %~dp0functions.log
 
       :: Iterate over each path in the PATH variable
       FOR %%i in ("%PATH:;=","%") DO (
-         ECHO Comparing: '%%~i' with '%pathToFind%' >> %~dp0functions.log
-         IF /I "%%~i" == "%pathToFind%" (
+         ECHO Comparing: '%%~i' with '!pathToFind!' >> %~dp0functions.log
+         IF /I "%%~i" == "!pathToFind!" (
             GOTO :foundPathInPath
          )
       )
